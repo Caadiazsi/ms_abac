@@ -20,3 +20,5 @@ RUN mix deps.get
 RUN mix do compile
 
 CMD ["/app/entrypoint.sh"]
+
+RUN chmod +x /app/entrypoint.sh
