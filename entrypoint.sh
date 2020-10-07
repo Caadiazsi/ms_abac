@@ -2,3 +2,5 @@
 # Docker entrypoint script.
 
 exec mix phx.server
+
+

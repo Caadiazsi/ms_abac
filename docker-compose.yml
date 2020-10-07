@@ -8,3 +8,4 @@ services:
     ports:
       # Mapping the port to make the Phoenix app accessible outside of the container
       - "4000:4000"
+

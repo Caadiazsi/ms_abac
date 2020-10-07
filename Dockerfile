@@ -19,6 +19,8 @@ RUN mix deps.get
 # Compile the project
 RUN mix do compile
 
+EXPOSE 4000
+
 CMD ["/app/entrypoint.sh"]
 
 RUN chmod +x /app/entrypoint.sh
