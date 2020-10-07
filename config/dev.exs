@@ -5,7 +5,7 @@ config :ms_abac, MsAbac.Repo,
   username: "postgres",
   password: "12345678",
   database: "abacdb",
-  hostname: "ms-abac:us-central1:abacdb",
+  hostname: "35.223.165.202",
   pool_size: 5
 
 # For development, we disable any cache and enable
