@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :ms_abac, MsAbacWeb.Endpoint,
-  http: [port: 4000],
+  http: [port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json",
   load_from_system_env: true,
   check_origin: false,
