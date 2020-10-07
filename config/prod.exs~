@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :ms_abac, MsAbacWeb.Endpoint,
-  http: [port: 80],
+  http: [port: {:system, "PORT"}],
   cache_static_manifest: "priv/static/cache_manifest.json",
   load_from_system_env: true,
   check_origin: false,
@@ -21,7 +21,7 @@ config :ms_abac, MsAbac.Repo,
     username: "postgres",
     password: "12345678",
     database: "abacdb",
-    hostname: "35.223.165.202"
+    socket_dir: "/tmp/cloudsql/ms-abac:us-central1:abacdb",
     pool_size: 15
 
 # Do not print debug messages in production
