@@ -4,8 +4,8 @@ use Mix.Config
 config :ms_abac, MsAbac.Repo,
   username: "postgres",
   password: "12345678",
-  database: "abacdb",
-  hostname: "ms-abac:us-central1:abacdb",
+  database: "ms_abac",
+  hostname: "localhost",
   pool_size: 5
 
 # For development, we disable any cache and enable
