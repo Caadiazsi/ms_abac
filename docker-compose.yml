@@ -7,5 +7,5 @@ services:
       context: ./
     ports:
       # Mapping the port to make the Phoenix app accessible outside of the container
-      - "80:80"
+      - "4000:80"
 

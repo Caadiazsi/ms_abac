@@ -19,7 +19,6 @@ RUN mix deps.get
 # Compile the project
 RUN mix do compile
 
-EXPOSE 80
 
 CMD ["/app/entrypoint.sh"]
 
