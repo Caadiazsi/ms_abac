@@ -21,7 +21,7 @@ config :ms_abac, MsAbac.Repo,
     username: "postgres",
     password: "12345678",
     database: "abacdb",
-    hostname: "35.223.165.202"
+    hostname: "35.223.165.202",
     pool_size: 15
 
 # Do not print debug messages in production
