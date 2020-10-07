@@ -1,0 +1,506 @@
+swagger: "2.0"
+info:
+  description: "Descripción del microservicio abac"
+  version: "1.0.0"
+  title: "ABAC"
+host: "35.208.121.159:80"
+basePath: "/api"
+tags:
+- name: "roles"
+  description: "Everything about roles"
+  
+- name: "microservices"
+  description: "Everything about microservices"
+  
+- name: "requests"
+  description: "Everything about requests"
+
+- name: "permissions"
+  description: "Everything about permissions"
+  
+
+schemes:
+- "http"
+paths:
+  /roles:
+    get:
+      tags:
+      - "roles"
+      summary: "Get roles"
+      description: "Get a list with all the roles"
+      operationId: "getRoles"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "404":
+          description: "Roles not found"
+    
+    
+    post:
+      tags:
+      - "roles"
+      summary: "Add a new role to the database"
+      description: ""
+      operationId: "addRole"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Category Object that need to be added to the supermarket."
+        required: true
+        schema:
+          $ref: '#/definitions/Role'
+      responses:
+        "405":
+          description: "Invalid input"
+          
+  /roles/{role_uuid}:
+    get:
+      tags:
+      - "roles"
+      summary: "Get an existing role by UUID"
+      description: ""
+      operationId: "getRolebyUuid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "role_uuid"
+        in: "path"
+        description: "UUID of the Role to return"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        "404":
+          description: "Role Not Found"
+    put:
+      tags:
+      - "roles"
+      summary: "Update an existing role"
+      description: ""
+      operationId: "updateRole"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "role_uuid"
+        in: "path"
+        description: "UUID of the Role to update"
+        required: true
+        type: "string"
+        format: "uuid"
+      - in: "body"
+        name: "body"
+        description: "Category Object that need to be added to the supermarket."
+        required: true
+        schema:
+          $ref: '#/definitions/Role'
+      responses:
+        "404":
+          description: "Role Not Found"
+    delete:
+      tags:
+      - "roles"
+      summary: "Delete an existing role"
+      operationId: "deleteRole"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "role_uuid"
+        in: "path"
+        description: "UUID of the Role to delete"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        "404":
+          description: "Role Nor Found"
+          
+  /microservices:
+    get:
+      tags:
+      - "microservices"
+      summary: "Get microservices"
+      description: "Get a list with all the microservices"
+      operationId: "getMicroservices"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "404":
+          description: "Microservices not found"
+    
+    
+    post:
+      tags:
+      - "microservices"
+      summary: "Add a new microservice to the database"
+      description: ""
+      operationId: "addMicroservice"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Category Object that need to be added to the supermarket."
+        required: true
+        schema:
+          $ref: '#/definitions/Microservice'
+      responses:
+        "405":
+          description: "Invalid input"
+          
+  /microservices/{ms_uuid}:
+    get:
+      tags:
+      - "microservices"
+      summary: "Get an existing microservice by UUID"
+      description: ""
+      operationId: "getMicroservicebyUuid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "ms_uuid"
+        in: "path"
+        description: "UUID of the Microservice to return"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        "404":
+          description: "Microservice Not Found"
+    put:
+      tags:
+      - "microservices"
+      summary: "Update an existing microservices"
+      description: ""
+      operationId: "updateMicroservice"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "ms_uuid"
+        in: "path"
+        description: "UUID of the Microservice to update"
+        required: true
+        type: "string"
+        format: "uuid"
+      - in: "body"
+        name: "body"
+        description: "Category Object that need to be added to the supermarket."
+        required: true
+        schema:
+          $ref: '#/definitions/Microservice'
+      responses:
+        "404":
+          description: "Microservice Not Found"
+    delete:
+      tags:
+      - "microservices"
+      summary: "Delete an existing microservice"
+      operationId: "deleteMicroservice"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "ms_uuid"
+        in: "path"
+        description: "UUID of the Microservice to delete"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        "404":
+          description: "Microservice Not Found"
+
+  /requests:
+    get:
+      tags:
+      - "requests"
+      summary: "Get requests"
+      description: "Get a list with all the requests"
+      operationId: "getRequests"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "404":
+          description: "Requests not found"
+    
+    
+    post:
+      tags:
+      - "requests"
+      summary: "Add a new requests to the database"
+      description: ""
+      operationId: "addRequest"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Category Object that need to be added to the supermarket."
+        required: true
+        schema:
+          $ref: '#/definitions/Request'
+      responses:
+        "405":
+          description: "Invalid input"
+          
+  /requests/{request_uuid}:
+    get:
+      tags:
+      - "requests"
+      summary: "Get an existing request by UUID"
+      description: ""
+      operationId: "getRequestbyUuid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "request_uuid"
+        in: "path"
+        description: "UUID of the Request to return"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        "404":
+          description: "Request Not Found"
+    put:
+      tags:
+      - "requests"
+      summary: "Update an existing request"
+      description: ""
+      operationId: "updateRequest"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "request_uuid"
+        in: "path"
+        description: "UUID of the Request to update"
+        required: true
+        type: "string"
+        format: "uuid"
+      - in: "body"
+        name: "body"
+        description: "Category Object that need to be added to the supermarket."
+        required: true
+        schema:
+          $ref: '#/definitions/Request'
+      responses:
+        "404":
+          description: "Request Not Found"
+    delete:
+      tags:
+      - "requests"
+      summary: "Delete an existing request"
+      operationId: "deleteRequest"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "request_uuid"
+        in: "path"
+        description: "UUID of the Request to delete"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        "404":
+          description: "Request Nor Found"   
+          
+
+
+  /permissions:
+    get:
+      tags:
+      - "permissions"
+      summary: "Get permissions"
+      description: "Get a list with all the permissions"
+      operationId: "getPermissions"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "404":
+          description: "Permissions not found"
+    
+    
+    post:
+      tags:
+      - "permissions"
+      summary: "Add a new permission to the database"
+      description: ""
+      operationId: "addPermission"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Category Object that need to be added to the supermarket."
+        required: true
+        schema:
+          $ref: '#/definitions/Permission'
+      responses:
+        "405":
+          description: "Invalid input"
+          
+  /permissions/{permission_uuid}:
+    get:
+      tags:
+      - "permissions"
+      summary: "Get an existing permission by UUID"
+      description: ""
+      operationId: "getPermissionbyUuid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "permission_uuid"
+        in: "path"
+        description: "UUID of the Permission to return"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        "404":
+          description: "Permission Not Found"
+    put:
+      tags:
+      - "permissions"
+      summary: "Update an existing permission"
+      description: ""
+      operationId: "updatePermission"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "permission_uuid"
+        in: "path"
+        description: "UUID of the Permissions to update"
+        required: true
+        type: "string"
+        format: "uuid"
+      - in: "body"
+        name: "body"
+        description: "Category Object that need to be added to the supermarket."
+        required: true
+        schema:
+          $ref: '#/definitions/Permission'
+      responses:
+        "404":
+          description: "Permission Not Found"
+    delete:
+      tags:
+      - "permissions"
+      summary: "Delete an existing permission"
+      operationId: "deletePermission"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "permission_uuid"
+        in: "path"
+        description: "UUID of the Permission to delete"
+        required: true
+        type: "string"
+        format: "uuid"
+      responses:
+        "404":
+          description: "Permission Nor Found"
+  
+definitions:
+
+  Role:
+    type: "object"
+    properties:
+      role:
+        type: "object"
+        properties:
+          role_name:
+            type: "string"
+            description: "Role Name"
+          role_description:
+            type: "string"
+            description: "Role Description"
+  Microservice:
+    type: "object"
+    properties:
+      role:
+        type: "object"
+        properties:
+          ms_name: 
+            type: "string"
+            description: "Microservice Name"
+          ms_description:
+            type: "string"
+            description: "Microservice Description"
+  Request:
+    type: "object"
+    properties:
+      request:
+        type: "object"
+        properties:
+          ms_uuid:
+            type: "string"
+            format: "uuid"
+            description: "Unique Identifier of the Microservice associated"
+          request_type:
+            type: "string"
+            format: "char"
+            description: "Type of Request (r,w,u,d)"
+          request_description:
+            type: "string"
+            description: "Request Description"
+  Permission:
+    type: "object"
+    properties:
+      permission:
+        type: "object"
+        properties:
+          role_uuid:
+            type: "string"
+            format: "uuid"
+            description: "Unique Identifier of the Role associated"
+          request_uuid:
+            type: "string"
+            format: "uuid" 
+            description: "Unique Identifier of the Request associated"
+        
+        
+      
+  
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
