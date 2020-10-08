@@ -7,6 +7,7 @@ defmodule MsAbac.Abac.Request do
   @derive {Phoenix.Param, key: :request_uuid}
 
   schema "requests" do
+    field :request_name,          :string
     field :request_description,   :string
     field :request_type,          :string
     field :ms_uuid,               Ecto.UUID
