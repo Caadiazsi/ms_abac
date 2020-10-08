@@ -8,7 +8,7 @@ defmodule MsAbacWeb.RoleController do
 
   def index(conn, _params) do
     roles = Abac.list_roles()
-    render(conn, "index.json", roles: %{getRoles: roles})
+    render(conn, "index.json", roles: roles)
   end
 
   def create(conn, %{"role" => role_params}) do
