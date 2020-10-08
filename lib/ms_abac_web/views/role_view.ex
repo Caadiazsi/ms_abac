@@ -3,11 +3,11 @@ defmodule MsAbacWeb.RoleView do
   alias MsAbacWeb.RoleView
 
   def render("index.json", %{roles: roles}) do
-    %{data: %{getRoles: render_many(roles, RoleView, "role.json")}
+    %{data: %{getRoles: render_many(roles, RoleView, "role.json")}}
   end
 
   def render("show.json", %{role: role}) do
-    %{data: render_one(role, RoleView, "role.json")}
+    render_one(role, RoleView, "role.json")
   end
 
   def render("role.json", %{role: role}) do
