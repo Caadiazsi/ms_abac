@@ -35,7 +35,7 @@ defmodule MsAbac.Abac do
       ** (Ecto.NoResultsError)
 
   """
-  def get_role!(id), do: Repo.get!Role, id)
+  def get_role!(id), do: Repo.get!(Role, id)
 
   @doc """
   Creates a role.
