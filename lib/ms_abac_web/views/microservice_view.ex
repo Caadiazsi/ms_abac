@@ -3,11 +3,11 @@ defmodule MsAbacWeb.MicroserviceView do
   alias MsAbacWeb.MicroserviceView
 
   def render("index.json", %{microservices: microservices}) do
-    %{data: render_many(microservices, MicroserviceView, "microservice.json")}
+    render_many(microservices |> Enum.map(fn x -> Map.from_struct(x) end), MicroserviceView, "microservice.json")
   end
 
   def render("show.json", %{microservice: microservice}) do
-    %{data: render_one(microservice, MicroserviceView, "microservice.json")}
+    render_one(microservice, MicroserviceView, "microservice.json")
   end
 
   def render("microservice.json", %{microservice: microservice}) do

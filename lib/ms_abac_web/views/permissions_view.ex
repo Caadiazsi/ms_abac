@@ -3,11 +3,11 @@ defmodule MsAbacWeb.PermissionsView do
   alias MsAbacWeb.PermissionsView
 
   def render("index.json", %{permission: permission}) do
-    %{data: render_many(permission, PermissionsView, "permissions.json")}
+    render_many(permission |> Enum.map(fn x -> Map.from_struct(x) end), PermissionsView, "permissions.json")
   end
 
   def render("show.json", %{permissions: permissions}) do
-    %{data: render_one(permissions, PermissionsView, "permissions.json")}
+    render_one(permissions, PermissionsView, "permissions.json")
   end
 
   def render("permissions.json", %{permissions: permissions}) do

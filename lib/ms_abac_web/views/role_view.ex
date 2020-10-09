@@ -3,7 +3,7 @@ defmodule MsAbacWeb.RoleView do
   alias MsAbacWeb.RoleView
 
   def render("index.json", %{roles: roles}) do
-    render_many(Enum.map(roles, fn x -> Map.from_struct(x) end), RoleView, "role.json")
+    render_many(roles |> Enum.map(fn x -> Map.from_struct(x) end), RoleView, "role.json")
   end
 
   def render("show.json", %{role: role}) do

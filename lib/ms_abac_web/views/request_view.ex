@@ -3,11 +3,11 @@ defmodule MsAbacWeb.RequestView do
   alias MsAbacWeb.RequestView
 
   def render("index.json", %{requests: requests}) do
-    %{data: render_many(requests, RequestView, "request.json")}
+    render_many(requests |> Enum.map(fn x -> Map.from_struct(x) end), RequestView, "request.json")
   end
 
   def render("show.json", %{request: request}) do
-    %{data: render_one(request, RequestView, "request.json")}
+    render_one(request, RequestView, "request.json")
   end
 
   def render("request.json", %{request: request}) do
