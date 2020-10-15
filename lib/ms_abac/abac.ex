@@ -323,7 +323,7 @@ defmodule MsAbac.Abac do
   """
 
   def has_permission!(%{"request_uuid" => request_uuid, "role_uuid" => role_uuid}) do
-    result = (from p in Permissions, where: p.request_uuid == ^"#{request_uuid}" and p.role_uuid == ^"#{role_uuid}")
+    (from p in Permissions, where: p.request_uuid == ^"#{request_uuid}" and p.role_uuid == ^"#{role_uuid}")
     |> Repo.all()
   end
 
