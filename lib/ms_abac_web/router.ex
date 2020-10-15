@@ -11,6 +11,7 @@ defmodule MsAbacWeb.Router do
     resources "/microservices", MicroserviceController, except: [:new, :edit]
     resources "/requests", RequestController, except: [:new, :edit]
     resources "/permissions", PermissionsController, except: [:new, :edit]
+    get "/has_permission", PermissionsController, :has_permission
   end
 
   # Enables LiveDashboard only for development

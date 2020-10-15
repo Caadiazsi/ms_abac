@@ -310,6 +310,35 @@ defmodule MsAbac.Abac do
   end
 
   @doc """
+  Gets a single permission.
+
+  Return an empty list if not result.
+
+  ## Examples
+    iex> has_permission!(data)
+    [%Permissions{}]
+
+    iex> has_permission!(data_error)
+    []
+  """
+
+  def has_permission!(data) do
+    query = Permission
+    result = Enum.reduce(filter, query, fn
+      {:role_uuid, role_uuid}, query ->
+        from q in query, where: ilike(fragment("?::text", q.role_uuid), ^"#{role_uuid}")
+      {:request_uuid, request_uuid}, query ->
+        from q in query, where: ilike(fragment("?::text", q.request_uuid), ^"#{request_uuid}")
+    end)
+    |> Repo.all()
+    case length(result) do
+      0  -> Ecto.NoResultsError
+      1 -> result -> Enum.at(0)
+      _ -> Ecto.NoResultsError
+    end
+  end
+
+  @doc """
   Gets a single permissions.
 
   Raises `Ecto.NoResultsError` if the Permissions does not exist.
@@ -323,6 +352,7 @@ defmodule MsAbac.Abac do
       ** (Ecto.NoResultsError)
 
   """
+
   def get_permissions!(id), do: Repo.get!(Permissions, id)
 
   @doc """
