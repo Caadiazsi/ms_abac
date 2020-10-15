@@ -322,20 +322,9 @@ defmodule MsAbac.Abac do
     []
   """
 
-  def has_permission!(filter) do
-    query = Permission
-    result = Enum.reduce(filter, query, fn
-      {:role_uuid, role_uuid}, query ->
-        from q in query, where: ilike(fragment("?::text", q.role_uuid), ^"#{role_uuid}")
-      {:request_uuid, request_uuid}, query ->
-        from q in query, where: ilike(fragment("?::text", q.request_uuid), ^"#{request_uuid}")
-    end)
+  def has_permission!(%{"request_uuid" => request_uuid, "role_uuid" => role_uuid}) do
+    result = (from p in Permissions, where: p.request_uuid == ^"#{request_uuid}" and p.role_uuid == ^"#{role_uuid}")
     |> Repo.all()
-    case length(result) do
-      0  -> Ecto.NoResultsError
-      1 -> result |> Enum.at(0)
-      _ -> Ecto.NoResultsError
-    end
   end
 
   @doc """

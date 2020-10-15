@@ -6,8 +6,8 @@ defmodule MsAbacWeb.PermissionsController do
 
   action_fallback MsAbacWeb.FallbackController
 
-  def has_permission(conn, %{"permission" => permission_params}) do
-    permission = Abac.has_permission!(permission_params)
+  def has_permission(conn, params) do
+    permission = Abac.has_permission!(params)
     render(conn, "index.json", permission: permission)
   end
 
