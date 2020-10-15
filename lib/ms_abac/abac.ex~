@@ -322,7 +322,7 @@ defmodule MsAbac.Abac do
     []
   """
 
-  def has_permission!(filter) do
+  def has_permission!(data) do
     query = Permission
     result = Enum.reduce(filter, query, fn
       {:role_uuid, role_uuid}, query ->
