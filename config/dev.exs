@@ -5,7 +5,7 @@ config :ms_abac, MsAbac.Repo,
   username: "postgres",
   password: "12345678",
   database: "abacdb",
-  hostname: "localhost",
+  hostname: "34.122.103.210",
   pool_size: 5
 
 # For development, we disable any cache and enable
@@ -15,7 +15,7 @@ config :ms_abac, MsAbac.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :ms_abac, MsAbacWeb.Endpoint,
-  http: [port: 3553],
+  http: [port: 80],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
