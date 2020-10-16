@@ -13,6 +13,11 @@ WORKDIR /app
 RUN mix local.hex --force
 RUN mix local.rebar --force
 
+# Repository creation
+RUN mix ecto.create
+
+RUN mix ecto.migrate
+
 # Getting Libraries
 RUN mix deps.get
 
